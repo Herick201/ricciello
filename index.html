@@ -86,7 +86,9 @@ section{padding:6.5rem 5vw;}
 
 #catalogo{background:var(--white);}
 .cat-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;}
-.filter-row{display:flex;gap:.5rem;flex-wrap:wrap;}
+.filter-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.filter-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);background:var(--light);border:1.5px solid var(--border2);border-radius:50px;padding:.42rem 1.1rem;cursor:default;}
+.filter-tag i{color:var(--gold2);font-size:.8rem;}
 .fbtn{font-size:.68rem;font-weight:500;letter-spacing:.1em;padding:.42rem 1.1rem;border-radius:50px;border:1.5px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Montserrat',sans-serif;}
 .fbtn:hover,.fbtn.on{border-color:var(--brown);color:var(--brown);background:rgba(124,63,24,.06);}
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.8rem;}
@@ -264,6 +266,7 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
       <h2 class="sec-title reveal">Nossa <em>Coleção</em></h2>
     </div>
     <div class="filter-row reveal">
+      <span class="filter-tag"><i class="fa-solid fa-sliders"></i> Filtrar</span>
       <button class="fbtn on" data-f="all">Todos</button>
       <button class="fbtn" data-f="liso">Lisos</button>
       <button class="fbtn" data-f="camurca">Camurça</button>
