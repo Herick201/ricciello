@@ -35,8 +35,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:74px;padding:0 5vw;di
 .nav-links{display:flex;gap:2.2rem;list-style:none;}
 .nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.08em;color:var(--muted);text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--brown);}
-.nav-cta{display:flex;align-items:center;gap:.5rem;background:var(--wa);color:white;font-size:.7rem;font-weight:600;letter-spacing:.06em;padding:.55rem 1.3rem;border-radius:50px;text-decoration:none;box-shadow:0 2px 10px rgba(37,211,102,.3);transition:all .2s;}
+.nav-cta{display:flex;align-items:center;gap:.5rem;background:var(--wa);color:white;font-size:.7rem;font-weight:600;letter-spacing:.06em;padding:.55rem 1.3rem;border-radius:50px;text-decoration:none;box-shadow:0 2px 10px rgba(37,211,102,.3);transition:all .2s;white-space:nowrap;}
 .nav-cta:hover{background:var(--wa2);transform:translateY(-1px);}
+.nav-right{display:flex;align-items:center;gap:.6rem;}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--brown);font-size:1.35rem;padding:.3rem .45rem;line-height:1;align-items:center;}
 
 .hero{min-height:100vh;padding-top:74px;display:grid;grid-template-columns:1fr 1fr;background:var(--white);overflow:hidden;}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5vw;position:relative;z-index:2;}
@@ -181,7 +183,13 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
 .reveal.vis{opacity:1;transform:none;}
 
 @media(max-width:1200px){.product-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:900px){nav{padding:0 4vw;}.nav-links{display:none;}.hero{grid-template-columns:1fr;}.hero-right{height:60vw;}.hero-left{padding:3.5rem 4vw 3rem;}#sobre{grid-template-columns:1fr;gap:3rem;}.qual-grid{grid-template-columns:1fr 1fr;}.modal{grid-template-columns:1fr;}.modal-img img{min-height:260px;}section{padding:4.5rem 4vw;}.product-grid{grid-template-columns:repeat(2,1fr);}footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}}
+@media(max-width:900px){nav{padding:0 4vw;}.nav-toggle{display:flex;}.nav-links{position:fixed;top:74px;left:0;right:0;flex-direction:column;gap:0;background:rgba(255,255,255,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:.4rem 4vw 1rem;box-shadow:0 14px 34px rgba(0,0,0,.09);transform:translateY(-125%);opacity:0;visibility:hidden;transition:transform .3s ease,opacity .3s ease,visibility .3s;}
+nav.open .nav-links{transform:translateY(0);opacity:1;visibility:visible;}
+nav.open .nav-toggle i::before{content:'\f00d';}
+.nav-links a{display:block;padding:1rem .2rem;font-size:.85rem;letter-spacing:.1em;border-bottom:1px solid var(--border);}
+.nav-links li:last-child a{border-bottom:none;}
+.nav-cta{padding:.5rem 1rem;font-size:.66rem;}.hero{grid-template-columns:1fr;}.hero-right{height:60vw;}.hero-left{padding:3.5rem 4vw 3rem;}.hero-badge-card{left:1rem;right:1rem;bottom:1.5rem;padding:.85rem 1.1rem;gap:.8rem;}.hbc-sub{font-size:.6rem;}#sobre{grid-template-columns:1fr;gap:3rem;}.qual-grid{grid-template-columns:1fr 1fr;}.modal{grid-template-columns:1fr;}.modal-img img{min-height:260px;}section{padding:4.5rem 4vw;}.product-grid{grid-template-columns:repeat(2,1fr);}footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}}
+@media(max-width:600px){.nav-brand-name{font-size:1.35rem;}.nav-cta{gap:0;width:44px;height:44px;padding:0;justify-content:center;border-radius:50%;}.nav-cta .nav-cta-txt{display:none;}.nav-cta i{font-size:1.15rem;}}
 @media(max-width:480px){.product-grid{grid-template-columns:1fr;}.qual-grid{grid-template-columns:1fr;}}
 
 /* ==== Placeholder "adicionar foto" (temporário até subir as fotos reais) ==== */
@@ -209,15 +217,18 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
     <div class="brand-ph" title="Adicionar logo">R</div>
     <div><span class="nav-brand-name">Ricciello</span><span class="nav-brand-sub">Calçados Masculinos</span></div>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#catalogo">Coleção</a></li>
     <li><a href="#qualidade">Qualidade</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
-  <a href="https://wa.me/5516996097934" target="_blank" rel="noopener noreferrer" class="nav-cta">
-    <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
-  </a>
+  <div class="nav-right">
+    <a href="https://wa.me/5516996097934" target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Falar no WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i> <span class="nav-cta-txt">Falar no WhatsApp</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars"></i></button>
+  </div>
 </nav>
 
 <section class="hero" id="inicio">
@@ -232,7 +243,7 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
     </div>
   </div>
   <div class="hero-right">
-    <img src="img/hero.jpg" alt="Sneaker Ricciello Cioccolato">
+    <img src="img/hero.webp" alt="Sneaker Ricciello Cioccolato">
     <div class="hero-badge-card">
       <i class="fa-solid fa-medal" style="font-size:1.5rem;color:var(--gold2);"></i>
       <div><div class="hbc-title">Couro 100% Legítimo</div><div class="hbc-sub">Qualidade que você sente no primeiro uso</div></div>
@@ -249,7 +260,7 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
 
 <section id="sobre">
   <div class="sobre-img-wrap reveal">
-    <img class="sobre-img" style="object-fit:cover;padding:0" src="img/sobre.jpg" alt="Detalhe do couro Ricciello">
+    <img class="sobre-img" style="object-fit:cover;padding:0" src="img/sobre.webp" alt="Detalhe do couro Ricciello">
     <div class="sobre-monogram">R</div>
   </div>
   <div class="sobre-text">
@@ -335,11 +346,11 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
 const WA='https://wa.me/5516996097934';
 const IMGS={
   nero:'',
-  sabbia:'img/sabbia.jpg',
-  bianco:'img/bianco.jpg',
+  sabbia:'img/sabbia.webp',
+  bianco:'img/bianco.webp',
   miele:'',
-  cioccolato:'img/cioccolato.jpg',
-  notte:'img/notte.jpg',
+  cioccolato:'img/cioccolato.webp',
+  notte:'img/notte.webp',
   potenza:'',
   perla:'',
 };
@@ -359,6 +370,11 @@ function openModal(id){const p=products.find(x=>x.id===id);if(!p)return;document
 function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+const nav=document.querySelector('nav'),navToggle=document.getElementById('navToggle');
+function setNav(open){nav.classList.toggle('open',open);navToggle.setAttribute('aria-expanded',open);navToggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');}
+navToggle.addEventListener('click',e=>{e.stopPropagation();setNav(!nav.classList.contains('open'));});
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>setNav(false)));
+document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target))setNav(false);});
 const fdd=document.querySelector('.filter-dd'),fbtn=document.getElementById('filterBtn'),flabel=document.getElementById('filterLabel');
 fbtn.addEventListener('click',e=>{e.stopPropagation();const open=fdd.classList.toggle('open');fbtn.setAttribute('aria-expanded',open);});
 document.querySelectorAll('.fitem').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.fitem').forEach(x=>x.classList.remove('on'));b.classList.add('on');flabel.textContent=b.dataset.f==='all'?'Filtrar':b.textContent;render(b.dataset.f);observe();fdd.classList.remove('open');fbtn.setAttribute('aria-expanded','false');});});
