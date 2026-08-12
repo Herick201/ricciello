@@ -158,8 +158,20 @@ footer{background:var(--text);padding:1.8rem 5vw;display:flex;align-items:center
 .modal-bd.open{opacity:1;pointer-events:all;}
 .modal{background:white;border-radius:10px;overflow:hidden;max-width:840px;width:100%;max-height:92vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;transform:scale(.95);transition:transform .3s;}
 .modal-bd.open .modal{transform:scale(1);}
-.modal-img{position:relative;background:var(--light);}
+.modal-img{position:relative;background:var(--light);overflow:hidden;min-height:440px;}
 .modal-img img{width:100%;height:100%;object-fit:cover;min-height:440px;display:block;}
+.gal{position:absolute;inset:0;}
+.gal-track{display:flex;height:100%;transition:transform .38s cubic-bezier(.4,0,.2,1);}
+.gal-slide{flex:0 0 100%;height:100%;}
+.gal-slide img{width:100%;height:100%;object-fit:cover;min-height:0;display:block;}
+.gal-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--border2);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .2s;z-index:2;box-shadow:0 3px 10px rgba(0,0,0,.14);}
+.gal-arrow:hover{background:var(--text);color:#fff;border-color:var(--text);}
+.gal-arrow.prev{left:.9rem;}
+.gal-arrow.next{right:.9rem;}
+.gal-dots{position:absolute;bottom:1rem;left:0;right:0;display:flex;justify-content:center;gap:.4rem;z-index:2;}
+.gal-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.12);cursor:pointer;transition:all .2s;padding:0;}
+.gal-dot.on{background:#fff;transform:scale(1.25);box-shadow:0 1px 4px rgba(0,0,0,.25);}
+.pcard-count{position:absolute;bottom:.7rem;right:.7rem;display:flex;align-items:center;gap:.3rem;background:rgba(0,0,0,.55);color:#fff;font-size:.62rem;font-weight:600;letter-spacing:.04em;padding:.28rem .5rem;border-radius:20px;backdrop-filter:blur(4px);z-index:2;}
 .modal-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--border2);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;z-index:2;}
 .modal-close:hover{background:var(--text);color:white;border-color:var(--text);}
 .modal-body{padding:2.5rem;display:flex;flex-direction:column;gap:1.2rem;}
@@ -236,7 +248,7 @@ nav.open .nav-toggle i::before{content:'\f00d';}
     <div class="hero-eyebrow">Coleção 2025</div>
     <h1 class="hero-title">O homem comum escolhe um calçado.<br>O homem de presença<br><em>veste Ricciello.</em></h1>
     <div class="hero-divider"></div>
-    <p class="hero-desc">Calçados masculinos em couro legítimo, com acabamento primoroso e numeração do 38 ao 43. Do trabalho à festa — Ricciello faz a diferença.</p>
+    <p class="hero-desc">Calçados masculinos com acabamento primoroso e numeração do 38 ao 43. Do trabalho à festa — Ricciello faz a diferença.</p>
     <div class="hero-actions">
       <a href="#catalogo" class="btn-primary">Ver Coleção</a>
       <a href="https://wa.me/5516996097934" target="_blank" rel="noopener noreferrer" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp</a>
@@ -246,15 +258,15 @@ nav.open .nav-toggle i::before{content:'\f00d';}
     <img src="img/hero.webp" alt="Sneaker Ricciello Cioccolato">
     <div class="hero-badge-card">
       <i class="fa-solid fa-medal" style="font-size:1.5rem;color:var(--gold2);"></i>
-      <div><div class="hbc-title">Couro 100% Legítimo</div><div class="hbc-sub">Qualidade que você sente no primeiro uso</div></div>
+      <div><div class="hbc-title">Acabamento Premium</div><div class="hbc-sub">Qualidade que você sente no primeiro uso</div></div>
     </div>
   </div>
 </section>
 
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Couro Natural</span></div>
+  <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Qualidade Garantida</span></div>
   <div class="stat-item"><span class="stat-num">38–43</span><span class="stat-label">Numeração</span></div>
-  <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Modelos Exclusivos</span></div>
+  <div class="stat-item"><span class="stat-num">9</span><span class="stat-label">Modelos Exclusivos</span></div>
   <div class="stat-item"><span class="stat-num">BR</span><span class="stat-label">Envio Nacional</span></div>
 </div>
 
@@ -266,9 +278,9 @@ nav.open .nav-toggle i::before{content:'\f00d';}
   <div class="sobre-text">
     <div class="sec-tag reveal">Quem Somos</div>
     <h2 class="sec-title reveal">Feito para o homem<br>que se <em>cuida</em></h2>
-    <p class="sobre-body reveal">A Ricciello nasceu da crença de que um calçado bonito precisa também ser de qualidade real. Trabalhamos com couro legítimo, acabamento caprichado e atenção a cada detalhe — para o homem que sabe que estilo começa nos pés.</p>
+    <p class="sobre-body reveal">A Ricciello nasceu da crença de que um calçado bonito precisa também ser de qualidade real. Trabalhamos com materiais selecionados, acabamento caprichado e atenção a cada detalhe — para o homem que sabe que estilo começa nos pés.</p>
     <div class="sobre-pillars reveal">
-      <div class="pillar"><i class="fa-solid fa-circle-check"></i><div class="pillar-text"><strong>Couro de verdade</strong>Nada de sintético. Nosso material respira, molda ao pé e só melhora com o tempo.</div></div>
+      <div class="pillar"><i class="fa-solid fa-circle-check"></i><div class="pillar-text"><strong>Feito para durar</strong>Materiais selecionados e resistentes, pensados para acompanhar você por muito tempo.</div></div>
       <div class="pillar"><i class="fa-solid fa-circle-check"></i><div class="pillar-text"><strong>Do trabalho ao evento</strong>Modelos que transitam com elegância em qualquer ocasião.</div></div>
       <div class="pillar"><i class="fa-solid fa-circle-check"></i><div class="pillar-text"><strong>Atendimento direto</strong>Você escolhe aqui, fala com a gente no WhatsApp e a gente resolve tudo.</div></div>
     </div>
@@ -299,7 +311,7 @@ nav.open .nav-toggle i::before{content:'\f00d';}
   <div class="sec-tag reveal">Por que Ricciello?</div>
   <h2 class="sec-title reveal">Qualidade em cada <em>detalhe</em></h2>
   <div class="qual-grid">
-    <div class="qcard reveal"><div class="qcard-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="qcard-name">Couro Legítimo</div><p class="qcard-desc">Trabalhamos apenas com couro natural. Ele respira, molda ao pé e envelhece com personalidade.</p></div>
+    <div class="qcard reveal"><div class="qcard-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="qcard-name">Material Selecionado</div><p class="qcard-desc">Escolhemos cada material com cuidado para garantir resistência e um caimento que valoriza o pé.</p></div>
     <div class="qcard reveal"><div class="qcard-icon"><i class="fa-solid fa-scissors"></i></div><div class="qcard-name">Acabamento Impecável</div><p class="qcard-desc">Costuras uniformes e bordas bem acabadas, revisadas antes de cada par sair da produção.</p></div>
     <div class="qcard reveal"><div class="qcard-icon"><i class="fa-solid fa-shoe-prints"></i></div><div class="qcard-name">Conforto Real</div><p class="qcard-desc">Palmilha anatômica e forro interno macio — para usar o dia inteiro sem sacrificar os pés.</p></div>
     <div class="qcard reveal"><div class="qcard-icon"><i class="fa-solid fa-truck-fast"></i></div><div class="qcard-name">Entrega Segura</div><p class="qcard-desc">Envio para todo o Brasil com rastreamento. Seu par chega com o mesmo cuidado com que foi feito.</p></div>
@@ -318,7 +330,7 @@ nav.open .nav-toggle i::before{content:'\f00d';}
     <div class="contato-info reveal">
       <div class="cinfo"><i class="fa-solid fa-phone"></i> <strong>(16) 99609-7934</strong></div>
       <div class="cinfo"><i class="fa-solid fa-truck"></i> <strong>Envio para todo Brasil</strong></div>
-      <div class="cinfo"><i class="fa-solid fa-leaf"></i> <strong>Couro Legítimo Garantido</strong></div>
+      <div class="cinfo"><i class="fa-solid fa-award"></i> <strong>Qualidade Garantida</strong></div>
     </div>
   </div>
 </section>
@@ -352,8 +364,10 @@ const IMGS={
   cioccolato:'img/cioccolato.webp',
   notte:'img/notte.webp',
   potenza:'',
-  perla:'',
+  perla:['img/perla-1.webp','img/perla-2.webp','img/perla-3.webp','img/perla-4.webp'],
+  venezia:['img/venezia-1.webp','img/venezia-2.webp','img/venezia-3.webp','img/venezia-4.webp'],
 };
+function imgList(p){const v=IMGS[p.img];return Array.isArray(v)?v:(v?[v]:[]);}
 const products=[
   {id:1,f:'liso',badge:'Mais Vendido',cat:'Sneaker Casual',name:'Nero',desc:'Preto liso e absoluto. <em>Nero</em> significa \'preto\' em italiano: o par curinga que vai do trabalho ao rolê sem esforço.',price:'R$ 199',priceC:'R$ 220',parc:'5x de R$ 44',mat:'Cabedal premium',sole:'Borracha branca',cor:'Preto',img:'nero',sizes:[39,40,41]},
   {id:2,f:'camurca',badge:null,cat:'Sneaker Camurça',name:'Sabbia',desc:'Camurça na cor areia. <em>Sabbia</em> quer dizer \'areia\': textura macia e um tom neutro que combina com jeans, chino e alfaiataria.',price:'R$ 220',priceC:'R$ 240',parc:'5x de R$ 48',mat:'Camurça',sole:'Borracha branca',cor:'Bege / Areia',img:'sabbia',sizes:[39,40,41,42]},
@@ -363,13 +377,18 @@ const products=[
   {id:6,f:'liso',badge:null,cat:'Sneaker Sola Branca',name:'Notte',desc:'Preto com sola branca de contraste. <em>Notte</em> significa \'noite\': discreto de dia, elegante à noite.',price:'R$ 209,90',priceC:'R$ 230',parc:'5x de R$ 46',mat:'Cabedal premium',sole:'Borracha branca',cor:'Preto',img:'notte',sizes:[38,39,41,42,43]},
   {id:7,f:'chunky',badge:'Novo',cat:'Sneaker Chunky',name:'Potenza',desc:'Chunky de sola alta em preto. <em>Potenza</em> é \'força\' em italiano — presença e atitude a cada passo.',price:'R$ 240',priceC:'R$ 260',parc:'5x de R$ 52',mat:'Cabedal premium',sole:'Chunky (sola alta)',cor:'Preto',img:'potenza',sizes:[38,40]},
   {id:8,f:'chunky',badge:null,cat:'Sneaker Chunky',name:'Perla',desc:'Chunky de sola alta em off-white. <em>Perla</em> quer dizer \'pérola\': um creme sofisticado que se destaca sem exagero.',price:'R$ 240',priceC:'R$ 260',parc:'5x de R$ 52',mat:'Cabedal premium',sole:'Chunky (sola alta)',cor:'Off-white / Creme',img:'perla',sizes:[38,39,40,41]},
+  {id:9,f:'liso',badge:'Novo',cat:'Sneaker Couro',name:'Venezia',desc:'Couro texturizado off-white com solado azul-marinho e detalhe marinho no calcanhar. <em>Venezia</em> é uma homenagem a Veneza — elegância serena com um toque de contraste.',price:'R$ 220',priceC:'R$ 240',parc:'5x de R$ 48',mat:'Couro',sole:'Borracha azul-marinho',cor:'Off-white / Cinza claro',img:'venezia',sizes:[39,40,41,42]},
 ];
 function waLink(n,s){const m=s?'Olá! Tenho interesse no modelo *'+n+'* no número *'+s+'*. Pode me passar mais informações?':'Olá! Tenho interesse no modelo *'+n+'*. Pode me passar mais informações?';return WA+'?text='+encodeURIComponent(m);}
-function render(f){const list=f==='all'?products:products.filter(p=>p.f===f);document.getElementById('grid').innerHTML=list.map(p=>`<div class="pcard" onclick="openModal(${p.id})"><div class="pcard-img">${IMGS[p.img]?`<img src="${IMGS[p.img]}" alt="${p.name}" loading="lazy">`:`<div class="img-ph"><i class="fa-solid fa-shoe-prints"></i><span class="img-ph-txt">Adicionar foto</span><span class="img-ph-sub">${p.name}</span></div>`}${p.badge?`<div class="pcard-badge">${p.badge}</div>`:''}<div class="pcard-overlay"><a class="pcard-overlay-btn" href="${waLink(p.name)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp</a></div></div><div class="pcard-body"><div class="pcard-cat">${p.cat}</div><div class="pcard-name">${p.name}</div><div class="pcard-desc">${p.desc}</div><div class="pcard-footer"><div class="pcard-price">${p.price}<span class="price-note">no Pix</span></div><div class="pcard-sizes">${p.sizes.map(s=>`<span class="pcard-size">${s}</span>`).join('')}</div></div></div></div>`).join('');}
-function openModal(id){const p=products.find(x=>x.id===id);if(!p)return;document.getElementById('mImg').innerHTML=`<button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>${IMGS[p.img]?`<img src="${IMGS[p.img]}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;min-height:440px;display:block;">`:`<div class="img-ph"><i class="fa-solid fa-shoe-prints"></i><span class="img-ph-txt">Adicionar foto</span><span class="img-ph-sub">${p.name}</span></div>`}`;document.getElementById('mBody').innerHTML=`<div class="modal-cat">${p.cat}</div><div class="modal-name">${p.name}</div><p class="modal-desc">${p.desc}</p><div class="modal-price">${p.price}<span class="price-note">à vista no Pix</span></div><div class="modal-parc">ou ${p.parc} <span>(${p.priceC})</span></div><div><div class="modal-size-label">Escolha o número</div><div class="modal-sizes">${p.sizes.map(s=>`<a class="modal-size" href="${waLink(p.name,s)}" target="_blank" rel="noopener noreferrer">${s}</a>`).join('')}</div></div><a href="${waLink(p.name)}" target="_blank" rel="noopener noreferrer" class="modal-wa"><i class="fa-brands fa-whatsapp"></i> Pedir pelo WhatsApp</a><div class="modal-specs"><div><div class="mspec-label">Material</div><div class="mspec-val">${p.mat}</div></div><div><div class="mspec-label">Solado</div><div class="mspec-val">${p.sole}</div></div><div><div class="mspec-label">Cor</div><div class="mspec-val">${p.cor}</div></div><div><div class="mspec-label">Numeração</div><div class="mspec-val">${p.sizes.join(', ')}</div></div></div>`;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function render(f){const list=f==='all'?products:products.filter(p=>p.f===f);document.getElementById('grid').innerHTML=list.map(p=>{const gs=imgList(p);return `<div class="pcard" onclick="openModal(${p.id})"><div class="pcard-img">${gs.length?`<img src="${gs[0]}" alt="${p.name}" loading="lazy">`:`<div class="img-ph"><i class="fa-solid fa-shoe-prints"></i><span class="img-ph-txt">Adicionar foto</span><span class="img-ph-sub">${p.name}</span></div>`}${p.badge?`<div class="pcard-badge">${p.badge}</div>`:''}${gs.length>1?`<div class="pcard-count"><i class="fa-regular fa-images"></i> ${gs.length}</div>`:''}<div class="pcard-overlay"><a class="pcard-overlay-btn" href="${waLink(p.name)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"><i class="fa-brands fa-whatsapp"></i> Pedir no WhatsApp</a></div></div><div class="pcard-body"><div class="pcard-cat">${p.cat}</div><div class="pcard-name">${p.name}</div><div class="pcard-desc">${p.desc}</div><div class="pcard-footer"><div class="pcard-price">${p.price}<span class="price-note">no Pix</span></div><div class="pcard-sizes">${p.sizes.map(s=>`<span class="pcard-size">${s}</span>`).join('')}</div></div></div></div>`;}).join('');}
+let galImgs=[],galIdx=0;
+function galRender(){const t=document.getElementById('galTrack');if(!t)return;t.style.transform='translateX(-'+(galIdx*100)+'%)';document.querySelectorAll('.gal-dot').forEach((d,i)=>d.classList.toggle('on',i===galIdx));}
+function galNav(dir,ev){if(ev)ev.stopPropagation();if(!galImgs.length)return;galIdx=(galIdx+dir+galImgs.length)%galImgs.length;galRender();}
+function galGo(i,ev){if(ev)ev.stopPropagation();galIdx=i;galRender();}
+function openModal(id){const p=products.find(x=>x.id===id);if(!p)return;galImgs=imgList(p);galIdx=0;const gal=galImgs.length?`<div class="gal"><div class="gal-track" id="galTrack">${galImgs.map(s=>`<div class="gal-slide"><img src="${s}" alt="${p.name}"></div>`).join('')}</div>${galImgs.length>1?`<button class="gal-arrow prev" aria-label="Foto anterior" onclick="galNav(-1,event)"><i class="fa-solid fa-chevron-left"></i></button><button class="gal-arrow next" aria-label="Próxima foto" onclick="galNav(1,event)"><i class="fa-solid fa-chevron-right"></i></button><div class="gal-dots">${galImgs.map((_,i)=>`<button class="gal-dot${i===0?' on':''}" aria-label="Foto ${i+1}" onclick="galGo(${i},event)"></button>`).join('')}</div>`:''}</div>`:`<div class="img-ph"><i class="fa-solid fa-shoe-prints"></i><span class="img-ph-txt">Adicionar foto</span><span class="img-ph-sub">${p.name}</span></div>`;document.getElementById('mImg').innerHTML=`<button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>${gal}`;document.getElementById('mBody').innerHTML=`<div class="modal-cat">${p.cat}</div><div class="modal-name">${p.name}</div><p class="modal-desc">${p.desc}</p><div class="modal-price">${p.price}<span class="price-note">à vista no Pix</span></div><div class="modal-parc">ou ${p.parc} <span>(${p.priceC})</span></div><div><div class="modal-size-label">Escolha o número</div><div class="modal-sizes">${p.sizes.map(s=>`<a class="modal-size" href="${waLink(p.name,s)}" target="_blank" rel="noopener noreferrer">${s}</a>`).join('')}</div></div><a href="${waLink(p.name)}" target="_blank" rel="noopener noreferrer" class="modal-wa"><i class="fa-brands fa-whatsapp"></i> Pedir pelo WhatsApp</a><div class="modal-specs"><div><div class="mspec-label">Material</div><div class="mspec-val">${p.mat}</div></div><div><div class="mspec-label">Solado</div><div class="mspec-val">${p.sole}</div></div><div><div class="mspec-label">Cor</div><div class="mspec-val">${p.cor}</div></div><div><div class="mspec-label">Numeração</div><div class="mspec-val">${p.sizes.join(', ')}</div></div></div>`;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.addEventListener('keydown',e=>{if(!document.getElementById('modal').classList.contains('open'))return;if(e.key==='Escape')closeModal();else if(e.key==='ArrowLeft')galNav(-1);else if(e.key==='ArrowRight')galNav(1);});
 const nav=document.querySelector('nav'),navToggle=document.getElementById('navToggle');
 function setNav(open){nav.classList.toggle('open',open);navToggle.setAttribute('aria-expanded',open);navToggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');}
 navToggle.addEventListener('click',e=>{e.stopPropagation();setNav(!nav.classList.contains('open'));});
